@@ -10,7 +10,7 @@
 
 <script>
 import readPictureAsBase64 from '@/helper/FileReader';
-// import quantifyImageData from '@/models/QuantityImageData';
+import quantifyColor from '@/modules/QuantityImageData';
 
 export default {
   name: 'PictureLoader',
@@ -37,13 +37,13 @@ export default {
     getDataImage() {
       this.drawImage();
       const imgData = this.canvas.getContext('2d').getImageData(0, 0, this.imageObject.width, this.imageObject.height);
-      this.webWorker.postMessage(imgData.data);
-      this.webWorker.onmessage = (res) => {
-        console.log(res.data);
-      };
-      this.webWorker.onerror = (error) => {
-        console.log(error);
-      };
+      quantifyColor(imgData.data)
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     drawImage() {
       this.canvas.getContext('2d').width = this.imageObject.width;
