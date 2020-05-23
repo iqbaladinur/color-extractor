@@ -1,10 +1,31 @@
 <template>
   <div>
-    <img :src="image" ref="display">
-    <input type="file" ref="imgSrc" @change="readImage()">
-    <button @click="getDataImage" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      generate
-    </button>
+    <div class="wrap">
+      <label for="inputPicture" class="bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded cursor-pointer">
+        Select a Picture
+      </label>
+      <input class="hidden" id="inputPicture" type="file" ref="imgSrc" @change="readImage()">
+      <button class="ml-5 bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded" style="line-height: normal" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
+        {{
+          extracting ? 'Extracting...' : 'Extract Color'
+        }}
+      </button>
+    </div>
+    <div class="mt-5">
+    </div>
+    <div class="my-10">
+      <hr class="mb-5">
+      <div class="flex mb-4 flex-wrap">
+        <div class="lg:w-1/2 w-full border border-white">
+          <img :src="image" ref="display" width="100%">
+        </div>
+        <div class="lg:w-1/2 w-full">
+          <p class="text-white py-2 lg:py-0 lg:pl-5">
+            <b>Color Bianco</b> doesn't using server as processing. Instead, it's use your computer to quantify 5 dominant color based on your selected picture. It may be not optimized for photos and very large resolution picture.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,11 +35,17 @@ import quantifyColor from '@/modules/QuantityImageData';
 
 export default {
   name: 'PictureLoader',
+  computed: {
+    pictureAvaibility() {
+      return this.image == null;
+    },
+  },
   data() {
     return {
       image: null,
       imageObject: new Image(),
       canvas: document.createElement('canvas'),
+      extracting: false,
     };
   },
   methods: {
@@ -35,15 +62,20 @@ export default {
         });
     },
     getDataImage() {
-      this.drawImage();
-      const imgData = this.canvas.getContext('2d').getImageData(0, 0, this.imageObject.width, this.imageObject.height);
-      quantifyColor(imgData.data)
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      if (this.image) {
+        this.drawImage();
+        const imgData = this.canvas.getContext('2d').getImageData(0, 0, this.imageObject.width, this.imageObject.height);
+        this.extracting = true;
+        quantifyColor(imgData.data)
+          .then((res) => {
+            this.extracting = false;
+            this.$store.dispatch('setTopColors', res.data);
+          })
+          .catch((error) => {
+            this.extracting = false;
+            console.log(error);
+          });
+      }
     },
     drawImage() {
       this.canvas.getContext('2d').width = this.imageObject.width;
