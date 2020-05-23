@@ -1,27 +1,31 @@
 <template>
   <div>
-    <div class="wrap">
-      <label for="inputPicture" class="bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded cursor-pointer">
-        Select a Picture
-      </label>
-      <input class="hidden" id="inputPicture" type="file" ref="imgSrc" @change="readImage()">
-      <button class="ml-5 bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded" style="line-height: normal" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
-        {{
-          extracting ? 'Extracting...' : 'Extract Color'
-        }}
-      </button>
+    <div class="flex flex-wrap">
+      <div class="lg:w-1/6 w-full">
+        <label for="inputPicture" class="block bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded cursor-pointer w-full text-center">
+          Select Image
+        </label>
+        <input class="hidden" id="inputPicture" type="file" ref="imgSrc" @change="readImage()">
+      </div>
+      <div class="lg:w-1/6 w-full mt-4 lg:mt-0 lg:pl-2">
+          <button class="bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded w-full" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
+            {{
+              extracting ? 'Extracting...' : 'Extract Color'
+            }}
+          </button>
+      </div>
     </div>
     <div class="mt-5">
     </div>
     <div class="my-10">
       <hr class="mb-5">
       <div class="flex mb-4 flex-wrap">
-        <div class="lg:w-1/2 w-full border border-white">
+        <div class="lg:w-1/2 w-full lg:border border-white">
           <img :src="image" ref="display" width="100%">
         </div>
         <div class="lg:w-1/2 w-full">
           <p class="text-white py-2 lg:py-0 lg:pl-5">
-            <b>Color Bianco</b> doesn't using server as processing. Instead, it's use your computer to quantify 5 dominant color based on your selected picture. It may be not optimized for photos and very large resolution picture.
+            <b>Color Bianco</b> doesn't using server as processing. Instead, it's use your computer to quantify 5 dominant color based on your selected image. It may be not optimized for photo, closed range color and very large resolution image.
           </p>
         </div>
       </div>
@@ -63,9 +67,10 @@ export default {
     },
     getDataImage() {
       if (this.image) {
+        this.extracting = true;
+        this.$store.dispatch('setTopColors', []);
         this.drawImage();
         const imgData = this.canvas.getContext('2d').getImageData(0, 0, this.imageObject.width, this.imageObject.height);
-        this.extracting = true;
         quantifyColor(imgData.data)
           .then((res) => {
             this.extracting = false;

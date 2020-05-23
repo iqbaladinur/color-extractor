@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen py-20">
+  <div class="screen-off lg:py-20 py-10">
     <colors />
     <pic-loader />
   </div>
@@ -17,3 +17,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.screen-off{
+  min-height: calc(100vh - 177px);
+}
+</style>

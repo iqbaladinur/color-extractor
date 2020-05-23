@@ -113,18 +113,14 @@
       </div>
       <div class="w-full lg:block flex-grow lg:flex lg:items-center lg:w-auto" :class="{ 'hidden' : navbarExpanded }">
         <div class="lg:flex-grow">
-          <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 lg:mx-10 text-white hover:text-white"
+          <router-link
+            to="/"
+            tag="a"
+            class="block mt-4 lg:inline-block lg:mt-0 lg:mx-10 text-white hover:text-white pb-2"
+            :class="$route.path == '/' ? 'border-b border-white' : ''"
           >
             Image Extractor
-          </a>
-          <a
-            href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 lg:mx-10 text-white hover:text-white"
-          >
-            About
-          </a>
+          </router-link>
         </div>
         <div>
           <a href="https://github.com/iqbaladinur/color-extractor"
