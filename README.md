@@ -3,7 +3,9 @@
 
 ## Description
 Color Bianco is website that provide color extraction from an image with quantization algorithm.
-![Atom Screenshot](https://user-images.githubusercontent.com/378023/49132478-f4b77680-f31f-11e8-9e10-e8454d8d9b7e.png)
+Visit on [Color Bianco](https://bianco.netlify.app).
+
+![Color Bianco](https://raw.githubusercontent.com/iqbaladinur/color-extractor/master/screen_capture/ss.png)
 
 ## Project setup
 ```
