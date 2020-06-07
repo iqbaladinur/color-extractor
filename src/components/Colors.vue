@@ -18,8 +18,8 @@
         class="lg:w-1/5 w-full lg:h-40 h-20 flex"
         :style="`background-color: ${colors.colorHex}`"
       >
-        <div class="m-auto p-2 rounded opacity-50 hover:bg-black cursor-pointer" @click="copyToClipboard(colors.colorHex.toUpperCase())">
-          <p class="text-white text-xs">
+        <div class="m-auto p-2 rounded opacity-50 cursor-pointer" @click="copyToClipboard(colors.colorHex.toUpperCase())">
+          <p class="text-xs font-bold hover:font-black tippy" :class="contrastingText(colors.colorHex)">
             {{ colors.colorHex.toUpperCase() }}
           </p>
         </div>
@@ -50,6 +50,22 @@ export default {
       Input.setSelectionRange(0, 99999);
       document.execCommand('copy');
       Input.remove();
+    },
+    contrastingText(colorHex) {
+      let r = 0;
+      let g = 0;
+      let b = 0;
+      if (colorHex.length === 5) {
+        r = Number(`0x${colorHex[1]}${colorHex[1]}`);
+        g = Number(`0x${colorHex[2]}${colorHex[2]}`);
+        b = Number(`0x${colorHex[3]}${colorHex[3]}`);
+      } else if (colorHex.length === 9) {
+        r = Number(`0x${colorHex[1]}${colorHex[2]}`);
+        g = Number(`0x${colorHex[3]}${colorHex[4]}`);
+        b = Number(`0x${colorHex[5]}${colorHex[6]}`);
+      }
+      const average = (r + g + b) / 3;
+      return average > 128 ? 'text-black' : 'text-white';
     },
   },
 };
