@@ -1,6 +1,6 @@
 {
-  "name": "color-destructure",
-  "version": "0.1.0",
+  "name": "Bianco",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
