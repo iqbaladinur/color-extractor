@@ -25,7 +25,7 @@
         </div>
         <div class="lg:w-1/2 w-full">
           <p class="text-white py-2 lg:py-0 lg:pl-5">
-            <b>Color Bianco</b> doesn't using server as processing. Instead, it's use your computer to quantify 5 dominant color based on your selected image. It may be not optimized for photo, closed range color and very large resolution image.
+            <b>Color Bianco</b> doesn't using server as processing. Instead, it's use your machine to quantify 5 dominant color based on your selected image. It may be not optimized for photo, closed range color and very large resolution image.
           </p>
         </div>
       </div>
