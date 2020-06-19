@@ -98,7 +98,7 @@
           </g>
           <circle cx="132.518" cy="412.319" fill="#e5e1e5" r="28.466" />
         </svg>
-        <span class="font-semibold text-xl tracking-tight">Color Bianco</span>
+        <span class="font-semibold text-xl tracking-tight">Bianco</span>
       </div>
       <div class="block lg:hidden">
         <button

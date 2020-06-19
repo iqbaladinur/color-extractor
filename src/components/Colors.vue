@@ -1,15 +1,11 @@
 <template>
   <div class="mb-10">
     <div v-if="getTopColors.length < 1" class="flex mb-4">
-      <div class="w-1/5 lg:h-40 h-20 border-dashed border flex">
-        <div class="text-xs lg:block hidden m-auto border-dashed border p-2 rounded text-white">
-          #XXXXXXXX
-        </div>
-      </div>
-      <div class="w-1/5 bg-gray-400 lg:h-40 h-20"></div>
-      <div class="w-1/5 bg-gray-300 lg:h-40 h-20"></div>
-      <div class="w-1/5 bg-gray-200 lg:h-40 h-20"></div>
-      <div class="w-1/5 bg-gray-100 lg:h-40 h-20"></div>
+      <div class="w-1/5 bg-gray-500 lg:h-40 h-20" :class="{ 'animate' : getExtractionStatus}"></div>
+      <div class="w-1/5 bg-gray-400 lg:h-40 h-20" :class="{ 'animate' : getExtractionStatus}"></div>
+      <div class="w-1/5 bg-gray-300 lg:h-40 h-20" :class="{ 'animate' : getExtractionStatus}"></div>
+      <div class="w-1/5 bg-gray-200 lg:h-40 h-20" :class="{ 'animate' : getExtractionStatus}"></div>
+      <div class="w-1/5 bg-gray-100 lg:h-40 h-20" :class="{ 'animate' : getExtractionStatus}"></div>
     </div>
     <div v-else class="flex mb-4 flex-wrap">
       <div
@@ -34,7 +30,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'Colors',
   computed: {
-    ...mapGetters(['getTopColors']),
+    ...mapGetters(['getTopColors', 'getExtractionStatus']),
   },
   methods: {
     copyToClipboard(text) {
@@ -70,3 +66,18 @@ export default {
   },
 };
 </script>
+<style scoped>
+.animate {
+  animation : shimmer 2s infinite linear;
+  background: linear-gradient(90deg, #eff1f3 4%, #e9e8e8 25%, #eff1f3 36%);
+  background-size: 1000px 100%;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+</style>

@@ -71,13 +71,16 @@ export default {
         this.$store.dispatch('setTopColors', []);
         this.drawImage();
         const imgData = this.canvas.getContext('2d').getImageData(0, 0, this.imageObject.width, this.imageObject.height);
+        this.$store.dispatch('toggleExtraction');
         quantifyColor(imgData.data)
           .then((res) => {
             this.extracting = false;
+            this.$store.dispatch('toggleExtraction');
             this.$store.dispatch('setTopColors', res.data);
           })
           .catch((error) => {
             this.extracting = false;
+            this.$store.dispatch('toggleExtraction');
             console.log(error);
           });
       }
