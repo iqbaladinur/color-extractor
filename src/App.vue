@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-gray-700">
+  <div id="app">
     <navbar/>
     <div class="container mx-auto px-5">
       <router-view/>
@@ -20,3 +20,8 @@ export default {
   },
 };
 </script>
+<style>
+body {
+  @apply bg-gray-800;
+}
+</style>

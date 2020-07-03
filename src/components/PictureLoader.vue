@@ -1,14 +1,17 @@
 <template>
   <div>
+    <div class="flex mb-10">
+      <input type="text" class="lg:w-1/2 w-full py-2 px-4 m-auto rounded" placeholder="Paste image url here." v-model="url">
+    </div>
     <div class="flex flex-wrap">
-      <div class="lg:w-1/6 w-full">
-        <label for="inputPicture" class="block bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded cursor-pointer w-full text-center">
+      <div class="lg:w-1/6 w-full ml-auto">
+        <label for="inputPicture" class="block bg-gray-900 hover:bg-gray-900 text-white py-2 px-4 rounded cursor-pointer w-full text-center">
           Select Image
         </label>
         <input class="hidden" id="inputPicture" type="file" ref="imgSrc" @change="readImage()">
       </div>
-      <div class="lg:w-1/6 w-full mt-4 lg:mt-0 lg:pl-2">
-          <button class="bg-gray-800 hover:bg-gray-900 text-white py-2 px-4 rounded w-full" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
+      <div class="lg:w-1/6 w-full mt-4 lg:mt-0 lg:pl-2 mr-auto">
+          <button class="bg-gray-900 text-white py-2 px-4 rounded w-full" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
             {{
               extracting ? 'Extracting...' : 'Extract Color'
             }}
@@ -20,12 +23,12 @@
     <div class="my-10">
       <hr class="mb-5">
       <div class="flex mb-4 flex-wrap">
-        <div class="lg:w-1/2 w-full lg:border border-white">
-          <img :src="image" ref="display" width="100%">
+        <div class="lg:w-1/2 w-full flex">
+          <img :src="image" ref="display" width="50%" class="m-auto" crossorigin="Anonymous">
         </div>
         <div class="lg:w-1/2 w-full">
           <p class="text-white py-2 lg:py-0 lg:pl-5">
-            <b>Color Bianco</b> doesn't using server as processing. Instead, it's use your machine to quantify 5 dominant color based on your selected image. It may be not optimized for photo, closed range color and very large resolution image.
+            <b>Color Bianco</b> doesn't use server side as processing. Instead, it's use your machine to quantify 5 dominant color based on your selected image. It may be not optimized for photo, closed range color and very large resolution image.
           </p>
         </div>
       </div>
@@ -50,7 +53,18 @@ export default {
       imageObject: new Image(),
       canvas: document.createElement('canvas'),
       extracting: false,
+      url: '',
+      imageLoaded: false,
     };
+  },
+  mounted() {
+    this.imageObject.crossOrigin = 'Anonymous';
+  },
+  watch: {
+    url(newValue) {
+      this.image = newValue;
+      this.imageObject.src = newValue;
+    },
   },
   methods: {
     readImage() {
@@ -86,6 +100,7 @@ export default {
       }
     },
     drawImage() {
+      this.imageObject.crossOrigin = 'Anonymous';
       this.canvas.getContext('2d').width = this.imageObject.width;
       this.canvas.getContext('2d').height = this.imageObject.height;
       this.canvas.width = this.imageObject.width;
