@@ -24,7 +24,7 @@
       <hr class="mb-5">
       <div class="flex mb-4 flex-wrap">
         <div class="lg:w-1/2 w-full flex">
-          <img :src="image" ref="display" width="50%" class="m-auto" crossorigin="Anonymous">
+          <img :src="image" ref="display" width="50%" :class="isFetchingImage ? 'w-1/2 animate h-56' : '' " class="m-auto" crossorigin="Anonymous">
         </div>
         <div class="lg:w-1/2 w-full">
           <p class="text-white py-2 lg:py-0 lg:pl-5">
@@ -51,6 +51,7 @@ export default {
       url: '',
       imageLoaded: false,
       pictureAvaibility: true,
+      isFetchingImage: false,
     };
   },
   mounted() {
@@ -64,6 +65,7 @@ export default {
   methods: {
     readImage(url = null) {
       if (url) {
+        this.isFetchingImage = true;
         fetch(`https://yacdn.org/serve/${url}`)
           .then((result) => result.blob())
           .then((image) => {
@@ -73,8 +75,10 @@ export default {
                 this.image = base64Image;
                 this.imageObject.src = base64Image;
                 this.pictureAvaibility = false;
+                this.isFetchingImage = false;
               })
               .catch((error) => {
+                this.isFetchingImage = false;
                 console.log(error);
               });
           })

@@ -24,4 +24,17 @@ export default {
 body {
   @apply bg-gray-800;
 }
+.animate {
+  animation : shimmer 2s infinite linear;
+  background: linear-gradient(90deg, #eff1f3 4%, #e9e8e8 25%, #eff1f3 36%);
+  background-size: 1000px 100%;
+}
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
 </style>
