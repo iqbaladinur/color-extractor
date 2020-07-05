@@ -42,11 +42,6 @@ import quantifyColor from '@/modules/QuantityImageData';
 
 export default {
   name: 'PictureLoader',
-  computed: {
-    pictureAvaibility() {
-      return this.image == null;
-    },
-  },
   data() {
     return {
       image: null,
@@ -55,6 +50,7 @@ export default {
       extracting: false,
       url: '',
       imageLoaded: false,
+      pictureAvaibility: true,
     };
   },
   mounted() {
@@ -62,22 +58,42 @@ export default {
   },
   watch: {
     url(newValue) {
-      this.image = newValue;
-      this.imageObject.src = newValue;
+      this.readImage(newValue);
     },
   },
   methods: {
-    readImage() {
-      const file = this.$refs.imgSrc;
-      readPictureAsBase64(file.files[0])
-        .then((res) => {
-          const base64Image = res.target.result;
-          this.image = base64Image;
-          this.imageObject.src = base64Image;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    readImage(url = null) {
+      if (url) {
+        fetch(`https://yacdn.org/serve/${url}`)
+          .then((result) => result.blob())
+          .then((image) => {
+            readPictureAsBase64(image)
+              .then((res) => {
+                const base64Image = res.target.result;
+                this.image = base64Image;
+                this.imageObject.src = base64Image;
+                this.pictureAvaibility = false;
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        const file = this.$refs.imgSrc;
+        readPictureAsBase64(file.files[0])
+          .then((res) => {
+            const base64Image = res.target.result;
+            this.image = base64Image;
+            this.imageObject.src = base64Image;
+            this.pictureAvaibility = false;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
     getDataImage() {
       if (this.image) {
@@ -91,11 +107,13 @@ export default {
             this.extracting = false;
             this.$store.dispatch('toggleExtraction');
             this.$store.dispatch('setTopColors', res.data);
+            this.pictureAvaibility = true;
           })
           .catch((error) => {
             this.extracting = false;
             this.$store.dispatch('toggleExtraction');
             console.log(error);
+            this.pictureAvaibility = true;
           });
       }
     },
