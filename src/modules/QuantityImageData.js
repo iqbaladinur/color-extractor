@@ -12,11 +12,13 @@ const getTopImageData = createWebWorker((payload) => {
     // eslint-disable-next-line prefer-const
     let quantifiedColor = {};
     for (let index = 0; index < arrayOfImage.length; index += 4) {
-      const hexColor = convertRGBAtoHex(arrayOfImage[index], arrayOfImage[index + 1], arrayOfImage[index + 2], arrayOfImage[index + 3]);
-      if (quantifiedColor[hexColor]) {
-        quantifiedColor[hexColor] += 1;
-      } else {
-        quantifiedColor[hexColor] = 1;
+      if (arrayOfImage[index + 3] === 255) {
+        const hexColor = convertRGBAtoHex(arrayOfImage[index], arrayOfImage[index + 1], arrayOfImage[index + 2], arrayOfImage[index + 3]);
+        if (quantifiedColor[hexColor]) {
+          quantifiedColor[hexColor] += 1;
+        } else {
+          quantifiedColor[hexColor] = 1;
+        }
       }
     }
     const unSortedArray = Object.entries(quantifiedColor).map((array) => ({ colorHex: array[0], freq: array[1] }));
