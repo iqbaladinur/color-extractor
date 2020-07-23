@@ -122,12 +122,16 @@ export default {
       }
     },
     drawImage() {
+      let scaleDown = 1;
       this.imageObject.crossOrigin = 'Anonymous';
       this.canvas.getContext('2d').width = this.imageObject.width;
       this.canvas.getContext('2d').height = this.imageObject.height;
-      this.canvas.width = this.imageObject.width;
-      this.canvas.height = this.imageObject.height;
-      this.canvas.getContext('2d').drawImage(this.$refs.display, 0, 0);
+      if (this.imageObject.width > 500 || this.imageObject.height > 500) {
+        scaleDown = 0.25;
+      }
+      this.canvas.width = this.imageObject.width * scaleDown;
+      this.canvas.height = this.imageObject.height * scaleDown;
+      this.canvas.getContext('2d').drawImage(this.$refs.display, 0, 0, this.canvas.width, this.canvas.height);
     },
   },
 };
