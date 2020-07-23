@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div class="lg:w-1/2 w-full border-dashed border-2 border-white mx-auto mb-10 rounded relative" style="height: 400px">
+      <img :src="image" ref="display" :class="isFetchingImage ? 'animate' : '' " class="w-full h-full object-cover m-auto" crossorigin="Anonymous">
+      <Colors class="absolute bottom-0 w-full py-4 bg-white bg-opacity-50" />
+    </div>
     <div class="flex mb-10">
       <input type="text" class="lg:w-1/2 w-full py-2 px-4 m-auto rounded" placeholder="Paste image url here." v-model="url">
     </div>
@@ -20,28 +24,20 @@
     </div>
     <div class="mt-5">
     </div>
-    <div class="my-10">
-      <hr class="mb-5">
-      <div class="flex mb-4 flex-wrap">
-        <div class="lg:w-1/2 w-full flex">
-          <img :src="image" ref="display" width="50%" :class="isFetchingImage ? 'w-1/2 animate h-56' : '' " class="m-auto" crossorigin="Anonymous">
-        </div>
-        <div class="lg:w-1/2 w-full">
-          <p class="text-white py-2 lg:py-0 lg:pl-5">
-            <b>Color Bianco</b> doesn't use server side as processing. Instead, it's use your machine to quantify 5 dominant color based on your selected image. It may be not optimized for photo, closed range color and very large resolution image.
-          </p>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
+import Colors from '@/components/Colors.vue';
 import readPictureAsBase64 from '@/helper/FileReader';
 import quantifyColor from '@/modules/QuantityImageData';
 
+
 export default {
   name: 'PictureLoader',
+  components: {
+    Colors,
+  },
   data() {
     return {
       image: null,
@@ -66,6 +62,7 @@ export default {
     readImage(url = null) {
       if (url) {
         this.isFetchingImage = true;
+        this.image = null;
         fetch(`https://yacdn.org/serve/${url}`)
           .then((result) => result.blob())
           .then((image) => {

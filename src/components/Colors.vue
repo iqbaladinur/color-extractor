@@ -1,26 +1,20 @@
 <template>
-  <div class="mb-10">
-    <div v-if="getTopColors.length < 1" class="flex mb-4">
-      <div class="w-1/5 bg-gray-500 lg:h-40 h-20 m-2 rounded-lg shadow" :class="{ 'animate' : getExtractionStatus}"></div>
-      <div class="w-1/5 bg-gray-400 lg:h-40 h-20 m-2 rounded-lg shadow" :class="{ 'animate' : getExtractionStatus}"></div>
-      <div class="w-1/5 bg-gray-300 lg:h-40 h-20 m-2 rounded-lg shadow" :class="{ 'animate' : getExtractionStatus}"></div>
-      <div class="w-1/5 bg-gray-200 lg:h-40 h-20 m-2 rounded-lg shadow" :class="{ 'animate' : getExtractionStatus}"></div>
-      <div class="w-1/5 bg-gray-100 lg:h-40 h-20 m-2 rounded-lg shadow" :class="{ 'animate' : getExtractionStatus}"></div>
+  <div>
+    <div v-if="getTopColors.length < 1" class="flex mx-2 justify-center flex-wrap">
+      <div class="w-16 bg-gray-500 h-16 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
+      <div class="w-16 bg-gray-400 h-16 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
+      <div class="w-16 bg-gray-300 h-16 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
+      <div class="w-16 bg-gray-200 h-16 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
     </div>
-    <div v-else class="flex mb-4 flex-wrap">
+    <div v-else class="flex mx-2 flex-wrap justify-center">
       <div
         v-for="(colors, key) in getTopColors"
         :key="key"
-        class="lg:w-1/5 w-full"
+        class="w-16 h-16 flex m-2 rounded-full shadow relative"
+        :style="`background-color: ${colors.colorHex};`"
+        @click="copyToClipboard(colors.colorHex)"
       >
-        <div class="lg:h-40 h-20 flex m-2 rounded-lg shadow" :style="`background-color: ${colors.colorHex}`">
-          <div class="m-auto p-2 rounded opacity-50 cursor-pointer relative" @click="copyToClipboard(colors.colorHex.toUpperCase())">
-            <copied :text="contrastingText(colors.colorHex)" :bg="colors.colorHex" />
-            <p class="text-center text-xs font-bold hover:font-black tippy" :class="contrastingText(colors.colorHex)">
-              {{ colors.colorHex.toUpperCase() }}
-            </p>
-          </div>
-        </div>
+        <copied :text="contrastingText(colors.colorHex)" :bg="colors.colorHex" class="cursor-pointer" />
       </div>
     </div>
   </div>

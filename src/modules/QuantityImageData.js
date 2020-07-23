@@ -23,7 +23,7 @@ const getTopImageData = createWebWorker((payload) => {
     }
     const unSortedArray = Object.entries(quantifiedColor).map((array) => ({ colorHex: array[0], freq: array[1] }));
     const sortColor = (a, b) => (a.freq > b.freq ? -1 : 1);
-    return unSortedArray.sort(sortColor).slice(0, 5);
+    return unSortedArray.sort(sortColor).slice(0, 7);
   };
   const result = quantifyImageData(payload.data);
   postMessage(result);
