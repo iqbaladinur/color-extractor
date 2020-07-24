@@ -9,13 +9,13 @@
     </div>
     <div class="flex flex-wrap lg:relative fixed w-full left-0 bottom-0">
       <div class="lg:w-1/6 w-1/2 lg:pr-1 ml-auto ">
-        <label for="inputPicture" class="block bg-gray-900 hover:bg-gray-900 text-white py-2 px-4 lg:rounded cursor-pointer w-full text-center">
+        <label for="inputPicture" class="block bg-gray-900 hover:bg-gray-900 text-white lg:py-2 px-4 py-4 lg:rounded cursor-pointer w-full text-center">
           Select Image
         </label>
         <input class="hidden" id="inputPicture" type="file" ref="imgSrc" @change="readImage()">
       </div>
       <div class="lg:w-1/6 w-1/2 lg:pl-1 mr-auto">
-          <button class="bg-gray-900 text-white py-2 px-4 lg:rounded w-full" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
+          <button class="bg-gray-900 text-white lg:py-2 px-4 py-4 lg:rounded w-full" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
             {{
               extracting ? 'Extracting...' : 'Extract Color'
             }}
