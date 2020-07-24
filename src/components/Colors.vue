@@ -1,16 +1,16 @@
 <template>
   <div>
     <div v-if="getTopColors.length < 1" class="flex mx-2 justify-center flex-wrap">
-      <div class="w-16 bg-gray-500 h-16 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
-      <div class="w-16 bg-gray-400 h-16 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
-      <div class="w-16 bg-gray-300 h-16 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
-      <div class="w-16 bg-gray-200 h-16 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
+      <div class="lg:w-16 w-10 bg-gray-400 lg:h-16 h-10 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
+      <div class="lg:w-16 w-10 bg-gray-500 lg:h-16 h-10 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
+      <div class="lg:w-16 w-10 bg-gray-300 lg:h-16 h-10 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
+      <div class="lg:w-16 w-10 bg-gray-200 lg:h-16 h-10 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
     </div>
     <div v-else class="flex mx-2 flex-wrap justify-center">
       <div
         v-for="(colors, key) in getTopColors"
         :key="key"
-        class="w-16 h-16 flex m-2 rounded-full shadow relative"
+        class="lg:w-16 w-10 lg:h-16 h-10 flex m-2 rounded-full shadow relative"
         :style="`background-color: ${colors.colorHex};`"
         @click="copyToClipboard(colors.colorHex)"
       >

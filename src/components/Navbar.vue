@@ -7,11 +7,11 @@
         </span>
       </div>
       <div class="flex-grow flex flex-row-reverse lg:items-center w-auto">
-        <div class="bg-white bg-opacity-25 rounded">
+        <div>
           <a href="https://github.com/iqbaladinur/color-extractor"
-             class="inline-block text-sm px-4 py-3 leading-none  rounded text-white hover:border-transparent hover:text-white hover:bg-gray-900"
+             class="inline-block text-sm p-2 leading-none  rounded text-white hover:border-transparent hover:text-white hover:bg-gray-900"
           >
-            Github
+            <img src="@/assets/github.svg" width="20" height="20" class="inline text-white" style="filter: invert()">
           </a>
         </div>
       </div>

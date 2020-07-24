@@ -4,7 +4,7 @@
     <div class="container mx-auto px-5">
       <router-view/>
     </div>
-    <my-footer/>
+    <my-footer class="lg:block hidden"/>
   </div>
 </template>
 

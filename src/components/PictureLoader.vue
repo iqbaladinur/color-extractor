@@ -1,28 +1,26 @@
 <template>
   <div>
-    <div class="lg:w-1/2 w-full border-dashed border-2 border-white mx-auto mb-10 rounded relative" style="height: 400px">
+    <div class="lg:w-1/2 w-full border-2 border-white mx-auto lg:mb-10 mb-2 rounded relative lg:h-custom2 h-custom">
       <img :src="image" ref="display" :class="isFetchingImage ? 'animate' : '' " class="w-full h-full object-cover m-auto" crossorigin="Anonymous">
       <Colors class="absolute bottom-0 w-full py-4 bg-white bg-opacity-50" />
     </div>
-    <div class="flex mb-10">
+    <div class="flex lg:mb-10 mb-2">
       <input type="text" class="lg:w-1/2 w-full py-2 px-4 m-auto rounded" placeholder="Paste image url here." v-model="url">
     </div>
-    <div class="flex flex-wrap">
-      <div class="lg:w-1/6 w-full ml-auto">
-        <label for="inputPicture" class="block bg-gray-900 hover:bg-gray-900 text-white py-2 px-4 rounded cursor-pointer w-full text-center">
+    <div class="flex flex-wrap lg:relative fixed w-full left-0 bottom-0">
+      <div class="lg:w-1/6 w-1/2 lg:pr-1 ml-auto ">
+        <label for="inputPicture" class="block bg-gray-900 hover:bg-gray-900 text-white py-2 px-4 lg:rounded cursor-pointer w-full text-center">
           Select Image
         </label>
         <input class="hidden" id="inputPicture" type="file" ref="imgSrc" @change="readImage()">
       </div>
-      <div class="lg:w-1/6 w-full mt-4 lg:mt-0 lg:pl-2 mr-auto">
-          <button class="bg-gray-900 text-white py-2 px-4 rounded w-full" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
+      <div class="lg:w-1/6 w-1/2 lg:pl-1 mr-auto">
+          <button class="bg-gray-900 text-white py-2 px-4 lg:rounded w-full" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
             {{
               extracting ? 'Extracting...' : 'Extract Color'
             }}
           </button>
       </div>
-    </div>
-    <div class="mt-5">
     </div>
   </div>
 </template>
@@ -52,6 +50,7 @@ export default {
   },
   mounted() {
     this.imageObject.crossOrigin = 'Anonymous';
+    this.canvas.style.imageRendering = 'pixelated';
   },
   watch: {
     url(newValue) {
@@ -124,7 +123,7 @@ export default {
       this.canvas.getContext('2d').width = this.imageObject.width;
       this.canvas.getContext('2d').height = this.imageObject.height;
       if (this.imageObject.width > 500 || this.imageObject.height > 500) {
-        scaleDown = 0.25;
+        scaleDown = 0.1;
       }
       this.canvas.width = this.imageObject.width * scaleDown;
       this.canvas.height = this.imageObject.height * scaleDown;

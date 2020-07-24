@@ -1,5 +1,5 @@
 <template>
-  <div class="screen-off lg:py-20 py-10">
+  <div class="screen-off lg:py-20 lg:relative fixed w-full left-0 px-3">
     <pic-loader />
   </div>
 </template>
