@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-900 p-6 text-xs">
-    <div class="container mx-auto">
+    <div class="">
       <ul>
         <li class="text-white">
           Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>

@@ -2,7 +2,7 @@
 import createWebWorker from '@/modules/CreateWebWorker';
 
 const getTopImageData = createWebWorker((payload) => {
-  const quantifyImageData = (arrayOfImage) => {
+  const quantifyImageData = (arrayOfImage, merged = false, quantity = 10) => {
     const convertRGBAtoHex = (...rgba) => {
       const convertedToHex = rgba.map((v) => {
         const hex = v.toString(16);
@@ -30,12 +30,14 @@ const getTopImageData = createWebWorker((payload) => {
       };
     };
     let pixelDivider = 4;
-    if (arrayOfImage.length % 8 === 0) {
-      pixelDivider *= 8;
-    } else if (arrayOfImage.length % 6 === 0) {
-      pixelDivider *= 6;
-    } else if (arrayOfImage.length % 3) {
-      pixelDivider *= 3;
+    if (merged) {
+      if (arrayOfImage.length % 8 === 0) {
+        pixelDivider *= 8;
+      } else if (arrayOfImage.length % 6 === 0) {
+        pixelDivider *= 6;
+      } else if (arrayOfImage.length % 3) {
+        pixelDivider *= 3;
+      }
     }
     // eslint-disable-next-line prefer-const
     let quantifiedColor = {};
@@ -54,9 +56,9 @@ const getTopImageData = createWebWorker((payload) => {
     }
     const unSortedArray = Object.entries(quantifiedColor).map((array) => ({ colorHex: array[0], freq: array[1] }));
     const sortColor = (a, b) => (a.freq > b.freq ? -1 : 1);
-    return unSortedArray.sort(sortColor).slice(0, 7);
+    return unSortedArray.sort(sortColor).slice(0, quantity);
   };
-  const result = quantifyImageData(payload.data);
+  const result = quantifyImageData(payload.data.imgArray, payload.data.merge, payload.data.quantity);
   postMessage(result);
 });
 

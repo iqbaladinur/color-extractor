@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <div class="flex">
-      <div class="w-1/6 bg-white">
+      <div class="w-1/6 bg-gray-100">
         <navbar />
         <pic-loader />
       </div>
       <div class="w-5/6">
-        <div class="container px-5">
+        <div class="container px-5 mx-auto">
           <router-view/>
         </div>
         <my-footer class="lg:block hidden"/>

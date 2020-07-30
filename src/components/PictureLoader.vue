@@ -1,11 +1,18 @@
 <template>
   <div class="mt-10">
     <div class="flex px-4 py-2">
-      <input type="text" class="w-full py-2 px-4 m-auto rounded bg-gray-300 focus:bg-white placeholder-gray-700" placeholder="Paste image url here." v-model="url">
+      <input type="text" class="w-full py-2 px-4 m-auto rounded bg-gray-300 focus:bg-white placeholder-gray-700 text-gray-700" placeholder="Paste image url here." v-model="url">
+    </div>
+    <div class="flex px-4 py-2">
+      <input type="number" class="w-full py-2 px-4 m-auto rounded bg-gray-300 focus:bg-white placeholder-gray-700 text-gray-700" placeholder="Number of top colors" v-model="quantity">
     </div>
     <div class="flex flex-wrap lg:relative fixed w-full left-0 bottom-0 lg:p-0 px-3 py-4">
       <div class="w-full px-4 py-2">
-        <label for="inputPicture" class="block bg-orange-500 text-white lg:py-2 px-4 py-4 lg:rounded cursor-pointer w-full px-4 py-2 text-center rounded-tl-full rounded-bl-full shadow">
+        <input id="mergedOption" type="checkbox" v-model="mergedOption" class="h-3 w-3">
+        <label class="pl-2 text-sm" for="mergedOption" title="Merged some pixel and use the avg value">Merge Pixel</label>
+      </div>
+      <div class="w-full px-4 py-2">
+        <label for="inputPicture" class="block bg-purple-900 text-white lg:py-2 px-4 py-4 lg:rounded cursor-pointer w-full px-4 py-2 text-center rounded-tl-full rounded-bl-full shadow">
           Select Image
         </label>
         <input class="hidden" id="inputPicture" type="file" ref="imgSrc" @change="readImage()">
@@ -30,7 +37,8 @@ export default {
   name: 'PictureLoader',
   data() {
     return {
-      image: null,
+      quantity: 10,
+      mergedOption: false,
       imageObject: new Image(),
       canvas: document.createElement('canvas'),
       extracting: false,
@@ -47,6 +55,16 @@ export default {
   watch: {
     url(newValue) {
       this.readImage(newValue);
+    },
+    mergedOption() {
+      if (this.$store.getters.getImgSource) {
+        this.pictureAvaibility = false;
+      }
+    },
+    quantity() {
+      if (this.$store.getters.getImgSource) {
+        this.pictureAvaibility = false;
+      }
     },
   },
   methods: {
@@ -94,7 +112,7 @@ export default {
         this.drawImage();
         const imgData = this.canvas.getContext('2d').getImageData(0, 0, this.imageObject.width, this.imageObject.height);
         this.$store.dispatch('toggleExtraction');
-        quantifyColor(imgData.data)
+        quantifyColor({ imgArray: imgData.data, merge: this.mergedOption, quantity: this.quantity })
           .then((res) => {
             this.extracting = false;
             this.$store.dispatch('toggleExtraction');

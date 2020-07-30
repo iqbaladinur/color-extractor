@@ -1,5 +1,5 @@
 <template>
-  <nav class="p-3 bg-purple-500">
+  <nav class="p-3 bg-purple-900">
     <div class="container mx-auto flex items-center justify-between flex-wrap">
       <div>
         <span class="color-grad logo text-2xl">
