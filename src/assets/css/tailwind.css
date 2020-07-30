@@ -9,7 +9,7 @@ html {
 
 .logo{
   font-family: 'Yellowtail', cursive;
-  background: linear-gradient(to right, #e7796a 0%, #ddb710 30%, #24d19d 100%);
+  background: linear-gradient(to right, #6d1409 0%, #ddb710 30%, #1165c5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

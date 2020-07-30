@@ -17,6 +17,6 @@ export default {
 
 <style scoped>
 .screen-off{
-  min-height: calc(100vh - 145px);
+  min-height: calc(100vh - 84px);
 }
 </style>

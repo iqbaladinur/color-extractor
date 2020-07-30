@@ -7,6 +7,9 @@ export default new Vuex.Store({
   state: {
     topColors: [],
     isExtracting: false,
+    imgSource: null,
+    isFetchingImg: false,
+    imgDomObject: null,
   },
   mutations: {
     setTopColors: (state, payload) => {
@@ -14,6 +17,15 @@ export default new Vuex.Store({
     },
     toggleExtraction: (state) => {
       state.isExtracting = !state.isExtracting;
+    },
+    setImageSource: (state, imgSource) => {
+      state.imgSource = imgSource;
+    },
+    toggleIsFetchingImg: (state) => {
+      state.isFetchingImg = !state.isFetchingImg;
+    },
+    setImgDomObject: (state, domObjct) => {
+      state.imgDomObject = domObjct;
     },
   },
   actions: {
@@ -23,10 +35,22 @@ export default new Vuex.Store({
     toggleExtraction: (context) => {
       context.commit('toggleExtraction');
     },
+    setImageSource: (context, imgSource) => {
+      context.commit('setImageSource', imgSource);
+    },
+    toggleIsFetchingImg: (context) => {
+      context.commit('toggleIsFetchingImg');
+    },
+    setImgDomObject: (context, domObjct) => {
+      context.commit('setImgDomObject', domObjct);
+    },
   },
   getters: {
     getTopColors: (state) => state.topColors,
     getExtractionStatus: (state) => state.isExtracting,
+    getImgSource: (state) => state.imgSource,
+    getFetchingImgStatus: (state) => state.isFetchingImg,
+    getImgDomObject: (state) => state.imgDomObject,
   },
   modules: {
   },

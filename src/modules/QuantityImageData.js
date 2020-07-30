@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import createWebWorker from '@/modules/CreateWebWorker';
 
 const getTopImageData = createWebWorker((payload) => {
@@ -9,11 +10,41 @@ const getTopImageData = createWebWorker((payload) => {
       });
       return `#${convertedToHex.join('')}`;
     };
+    const countAveragePerMergedPixel = (pixelDivider, arrayOfImageData) => {
+      const totalPixel = pixelDivider / 4;
+      let r = 0;
+      let g = 0;
+      let b = 0;
+      let a = 0;
+      for (let index = 0; index < arrayOfImageData.length; index += 4) {
+        r += arrayOfImageData[index];
+        g += arrayOfImageData[index + 1];
+        b += arrayOfImageData[index + 2];
+        a += arrayOfImageData[index + 3];
+      }
+      return {
+        r: Math.round(r / totalPixel),
+        g: Math.round(g / totalPixel),
+        b: Math.round(b / totalPixel),
+        a: Math.round(a / totalPixel),
+      };
+    };
+    let pixelDivider = 4;
+    if (arrayOfImage.length % 8 === 0) {
+      pixelDivider *= 8;
+    } else if (arrayOfImage.length % 6 === 0) {
+      pixelDivider *= 6;
+    } else if (arrayOfImage.length % 3) {
+      pixelDivider *= 3;
+    }
     // eslint-disable-next-line prefer-const
     let quantifiedColor = {};
-    for (let index = 0; index < arrayOfImage.length; index += 4) {
+    for (let index = 0; index < arrayOfImage.length; index += pixelDivider) {
+      const {
+        r, g, b, a,
+      } = countAveragePerMergedPixel(pixelDivider, arrayOfImage.slice(index, index + pixelDivider));
       if (arrayOfImage[index + 3] === 255) {
-        const hexColor = convertRGBAtoHex(arrayOfImage[index], arrayOfImage[index + 1], arrayOfImage[index + 2], arrayOfImage[index + 3]);
+        const hexColor = convertRGBAtoHex(r, g, b, a);
         if (quantifiedColor[hexColor]) {
           quantifiedColor[hexColor] += 1;
         } else {

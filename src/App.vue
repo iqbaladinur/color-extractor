@@ -1,10 +1,16 @@
 <template>
   <div id="app">
-    <navbar/>
-    <div class="container mx-auto px-5">
-      <router-view/>
+    <div class="flex">
+      <div class="w-1/6 bg-white">
+        <navbar/>
+      </div>
+      <div class="w-5/6">
+        <div class="container px-5">
+          <router-view/>
+        </div>
+        <my-footer class="lg:block hidden"/>
+      </div>
     </div>
-    <my-footer class="lg:block hidden"/>
   </div>
 </template>
 
