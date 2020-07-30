@@ -6,10 +6,3 @@
 html {
   font-family: 'Inter', sans-serif;  
 }
-
-.logo{
-  font-family: 'Yellowtail', cursive;
-  background: linear-gradient(to right, #6d1409 0%, #ddb710 30%, #1165c5 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}

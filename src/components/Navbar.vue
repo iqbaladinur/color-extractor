@@ -3,7 +3,7 @@
     <div class="container mx-auto flex items-center justify-between flex-wrap">
       <div>
         <span class="color-grad logo text-2xl">
-          <b>Color</b> Bianco
+          Bianco
         </span>
       </div>
       <div class="flex-grow flex flex-row-reverse lg:items-center w-auto">
@@ -31,3 +31,10 @@ export default {
 };
 
 </script>
+
+<style scoped>
+.logo{
+  font-family: 'Yellowtail', cursive;
+  color: white;
+}
+</style>

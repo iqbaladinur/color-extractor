@@ -1,20 +1,16 @@
 <template>
-  <div>
-    <div class="lg:w-1/2 w-full border-2 border-white mx-auto lg:mb-10 mb-2 rounded relative lg:h-custom2 h-custom">
-      <ImgDisplay />
-      <Colors class="absolute bottom-0 w-full py-4 bg-white bg-opacity-50" />
-    </div>
-    <div class="flex lg:mb-10 mb-2">
-      <input type="text" class="lg:w-1/2 w-full py-2 px-4 m-auto rounded" placeholder="Paste image url here." v-model="url">
+  <div class="mt-10">
+    <div class="flex px-4 py-2">
+      <input type="text" class="w-full py-2 px-4 m-auto rounded bg-gray-300 focus:bg-white placeholder-gray-700" placeholder="Paste image url here." v-model="url">
     </div>
     <div class="flex flex-wrap lg:relative fixed w-full left-0 bottom-0 lg:p-0 px-3 py-4">
-      <div class="lg:w-1/6 w-1/2 lg:pr-1 ml-auto ">
-        <label for="inputPicture" class="block bg-orange-500 text-white lg:py-2 px-4 py-4 lg:rounded cursor-pointer w-full text-center rounded-tl-full rounded-bl-full shadow">
+      <div class="w-full px-4 py-2">
+        <label for="inputPicture" class="block bg-orange-500 text-white lg:py-2 px-4 py-4 lg:rounded cursor-pointer w-full px-4 py-2 text-center rounded-tl-full rounded-bl-full shadow">
           Select Image
         </label>
         <input class="hidden" id="inputPicture" type="file" ref="imgSrc" @change="readImage()">
       </div>
-      <div class="lg:w-1/6 w-1/2 lg:pl-1 mr-auto">
+      <div class="w-full px-4 py-2">
           <button class="bg-gray-900 text-white lg:py-2 px-4 py-4 lg:rounded w-full rounded-tr-full rounded-br-full shadow" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
             {{
               extracting ? 'Extracting...' : 'Extract Color'
@@ -26,18 +22,12 @@
 </template>
 
 <script>
-import Colors from '@/components/Colors.vue';
-import ImgDisplay from '@/components/ImgDisplay.vue';
 import readPictureAsBase64 from '@/helper/FileReader';
 import quantifyColor from '@/modules/QuantityImageData';
 
 
 export default {
   name: 'PictureLoader',
-  components: {
-    Colors,
-    ImgDisplay,
-  },
   data() {
     return {
       image: null,

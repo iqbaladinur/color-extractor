@@ -1,5 +1,5 @@
 <template>
-  <img :src="getImgSource" ref="display" :class="getFetchingImgStatus ? 'animate' : '' " class="w-full h-full object-cover m-auto" crossorigin="Anonymous">
+  <img :src="getImgSource" ref="display" :class="getFetchingImgStatus ? 'animate' : '' " class="w-auto h-full m-auto" crossorigin="Anonymous">
 </template>
 
 <script>

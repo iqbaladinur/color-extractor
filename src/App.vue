@@ -2,7 +2,8 @@
   <div id="app">
     <div class="flex">
       <div class="w-1/6 bg-white">
-        <navbar/>
+        <navbar />
+        <pic-loader />
       </div>
       <div class="w-5/6">
         <div class="container px-5">
@@ -17,12 +18,14 @@
 <script>
 import Navbar from '@/components/Navbar.vue';
 import MyFooter from '@/components/Footer.vue';
+import PicLoader from '@/components/PictureLoader.vue';
 
 export default {
   name: 'App',
   components: {
     Navbar,
     MyFooter,
+    PicLoader,
   },
 };
 </script>
