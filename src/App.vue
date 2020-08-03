@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="flex">
-      <div class="lg:w-1/6 w-0 bg-gray-100 lg:visible invisible">
+      <div class="lg:w-1/6 w-0 bg-gray-100 lg:visible invisible shadow-lg">
         <navbar />
         <pic-loader />
       </div>
@@ -31,7 +31,7 @@ export default {
 </script>
 <style>
 body {
-  @apply bg-gray-800;
+  @apply bg-indigo-100;
 }
 .animate {
   animation : shimmer 2s infinite linear;

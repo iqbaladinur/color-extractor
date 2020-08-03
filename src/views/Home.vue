@@ -1,10 +1,10 @@
 <template>
   <div class="screen-off lg:py-16 lg:relative w-full px-3 lg:mb-0 mb-10">
     <div class="flex flex-wrap">
-      <div class="bg-white rounded-lg bg-opacity-25 w-full lg:mb-10 mb-2 relative lg:h-custom2 h-auto lg:p-10 p-2">
+      <div class="bg-gray-500 bg-opacity-25 rounded-lg shadow w-full lg:mb-10 mb-2 relative lg:h-custom2 h-auto lg:p-10 p-2">
         <ImgDisplay />
       </div>
-      <div class="bg-white rounded-lg bg-opacity-25 w-full">
+      <div class="bg-gray-500 bg-opacity-25 rounded-lg shadow w-full">
         <Colors class="w-full p-4" />
       </div>
     </div>
