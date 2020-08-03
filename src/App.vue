@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <div class="flex">
-      <div class="w-1/6 bg-gray-100">
+      <div class="lg:w-1/6 w-0 bg-gray-100 lg:visible invisible">
         <navbar />
         <pic-loader />
       </div>
-      <div class="w-5/6">
-        <div class="container px-5 mx-auto">
+      <div class="lg:w-5/6 w-full">
+        <div class="container px-5 py-10 mx-auto">
           <router-view/>
         </div>
-        <my-footer class="lg:block hidden"/>
+        <my-footer class="hidden lg:block"/>
       </div>
     </div>
   </div>

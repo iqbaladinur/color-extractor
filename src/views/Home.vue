@@ -1,7 +1,7 @@
 <template>
-  <div class="screen-off lg:py-16 lg:relative fixed w-full left-0 px-3">
+  <div class="screen-off lg:py-16 lg:relative w-full px-3 lg:mb-0 mb-10">
     <div class="flex flex-wrap">
-      <div class="bg-white rounded-lg bg-opacity-25 w-full lg:mb-10 mb-2 relative lg:h-custom2 h-custom p-10">
+      <div class="bg-white rounded-lg bg-opacity-25 w-full lg:mb-10 mb-2 relative lg:h-custom2 h-auto lg:p-10 p-2">
         <ImgDisplay />
       </div>
       <div class="bg-white rounded-lg bg-opacity-25 w-full">
@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
 .screen-off{
-  min-height: calc(100vh - 84px);
+  min-height: calc(100vh - 164px);
 }
 .border-custom{
   @apply border-2;
