@@ -15,7 +15,7 @@
         <label class="pl-2 text-sm" for="mergedOption" title="Merged some pixel and use the avg value">Merge Pixel</label>
       </div>
       <div class="w-full lg:px-4 py-2">
-        <label for="inputPicture" class="block bg-purple-900 text-white lg:py-2 px-4 py-3 lg:rounded cursor-pointer w-full text-center shadow">
+        <label for="inputPicture" class="block bg-indigo-400 text-white lg:py-2 px-4 py-3 lg:rounded cursor-pointer w-full text-center shadow">
           Select Image
         </label>
         <input class="hidden" id="inputPicture" type="file" ref="imgSrc" @change="readImage()">

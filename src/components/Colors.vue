@@ -1,7 +1,6 @@
 <template>
   <div class="">
     <div v-if="getTopColors.length < 1" class="flex flex-wrap justify-center">
-      <div class="lg:w-16 w-10 bg-gray-700 lg:h-16 h-10 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
       <div class="lg:w-16 w-10 bg-gray-600 lg:h-16 h-10 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
       <div class="lg:w-16 w-10 bg-gray-400 lg:h-16 h-10 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>
       <div class="lg:w-16 w-10 bg-gray-500 lg:h-16 h-10 m-2 rounded-full shadow" :class="{ 'animate' : getExtractionStatus}"></div>

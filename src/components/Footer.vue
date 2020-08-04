@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-indigo-200 p-6 text-xs">
+  <div class="bg-indigo-200 bg-opacity-25 p-6 text-xs">
     <div class="text-gray-700">
       <ul>
         <li>

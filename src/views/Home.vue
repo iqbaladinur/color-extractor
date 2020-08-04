@@ -1,5 +1,8 @@
 <template>
   <div class="screen-off lg:py-16 lg:relative w-full px-3 lg:mb-0 mb-10">
+    <p class="text-left font-bold text-gray-600 py-4">
+      Display Here
+    </p>
     <div class="flex flex-wrap">
       <div class="bg-gray-500 bg-opacity-25 rounded-lg shadow w-full lg:mb-10 mb-2 relative lg:h-custom2 h-auto lg:p-10 p-2">
         <ImgDisplay />
