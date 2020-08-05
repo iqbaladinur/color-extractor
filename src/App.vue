@@ -12,7 +12,7 @@
         <my-footer class="hidden lg:block rounded-b-xl"/>
       </div>
       <div class="lg:w-1/6 w-0 lg:block hidden py-5 pr-5">
-        <div class="rounded-xl bg-indigo-200 bg-opacity-25 h-full p-5">
+        <div class="rounded-xl bg-indigo-200 bg-opacity-25 custom-right-sidebar p-5 overflow-y-scroll">
           <ColorRecomendation />
         </div>
       </div>
@@ -40,6 +40,14 @@ export default {
 body {
   @apply bg-gray-100;
   @apply text-gray-700;
+}
+.custom-right-sidebar{
+  height: calc(100vh - 40px);
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.custom-right-sidebar::-webkit-scrollbar {
+  display: none;
 }
 .animate {
   animation : shimmer 2s infinite linear;

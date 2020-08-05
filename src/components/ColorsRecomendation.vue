@@ -21,10 +21,6 @@ export default {
     return {
       arrayOfColors: [
         ['#bffb32ff', '#8cdc52ff', '#5dc378ff', '#9de748ff', '#b7f738ff'],
-        ['#bffb32ff', '#8cdc52ff', '#5dc378ff', '#9de748ff', '#b7f738ff'],
-        ['#bffb32ff', '#8cdc52ff', '#5dc378ff', '#9de748ff', '#b7f738ff'],
-        ['#bffb32ff', '#8cdc52ff', '#5dc378ff', '#9de748ff', '#b7f738ff'],
-        ['#bffb32ff', '#8cdc52ff', '#5dc378ff', '#9de748ff', '#b7f738ff'],
       ],
     };
   },
