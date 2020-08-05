@@ -5,6 +5,10 @@ module.exports = {
         custom: 'calc(100vh - 250px)',
         custom2: '400px',
       },
+      borderRadius: {
+        xl: '20px',
+        xxl: '40px',
+      },
     },
   },
   variants: {},

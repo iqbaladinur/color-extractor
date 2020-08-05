@@ -4,10 +4,10 @@
       Display Here
     </p>
     <div class="flex flex-wrap">
-      <div class="bg-gray-500 bg-opacity-25 rounded-lg shadow w-full lg:mb-10 mb-2 relative lg:h-custom2 h-auto lg:p-10 p-2">
+      <div class="bg-gray-400 bg-opacity-25 rounded-lg w-full lg:mb-10 mb-2 relative lg:h-custom2 h-auto lg:p-10 p-2">
         <ImgDisplay />
       </div>
-      <div class="bg-gray-500 bg-opacity-25 rounded-lg shadow w-full">
+      <div class="bg-gray-400 bg-opacity-25 rounded-lg w-full">
         <Colors class="w-full p-4" />
       </div>
     </div>
@@ -29,7 +29,7 @@ export default {
 
 <style scoped>
 .screen-off{
-  min-height: calc(100vh - 164px);
+  min-height: calc(100vh - 205px);
 }
 .border-custom{
   @apply border-2;

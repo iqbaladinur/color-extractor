@@ -4,10 +4,10 @@
       {{ mobileViewExpanded ? '&#9660;' : '&#9650;' }}
     </button>
     <div class="flex lg:px-4 py-2">
-      <input type="text" class="w-full py-2 px-4 m-auto rounded bg-gray-300 focus:bg-white placeholder-gray-700 text-gray-700" placeholder="Paste image url here." v-model="url">
+      <input type="text" class="rounded-full w-full py-2 px-4 m-auto bg-gray-300 focus:outline-none focus:bg-white placeholder-gray-700 text-gray-700" placeholder="Paste image url here." v-model="url">
     </div>
     <div class="flex lg:px-4 py-2">
-      <input type="number" class="w-full py-2 px-4 m-auto rounded bg-gray-300 focus:bg-white placeholder-gray-700 text-gray-700" placeholder="Number of top colors" v-model="quantity">
+      <input type="number" class="rounded-full w-full py-2 px-4 m-auto bg-gray-300 focus:bg-white focus:outline-none placeholder-gray-700 text-gray-700" placeholder="Number of top colors" v-model="quantity">
     </div>
     <div class="flex flex-wrap lg:relative w-full lg:p-0">
       <div class="w-full lg:px-4 py-2">
@@ -15,13 +15,13 @@
         <label class="pl-2 text-sm" for="mergedOption" title="Merged some pixel and use the avg value">Merge Pixel</label>
       </div>
       <div class="w-full lg:px-4 py-2">
-        <label for="inputPicture" class="block bg-indigo-400 text-white lg:py-2 px-4 py-3 lg:rounded cursor-pointer w-full text-center shadow">
+        <label for="inputPicture" class="rounded-lg block bg-indigo-400 text-white px-4 py-2 cursor-pointer w-full text-center">
           Select Image
         </label>
         <input class="hidden" id="inputPicture" type="file" ref="imgSrc" @change="readImage()">
       </div>
       <div class="w-full lg:px-4 py-2">
-          <button class="bg-gray-900 text-white lg:py-2 px-4 py-3 lg:rounded w-full shadow" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
+          <button class="rounded-lg bg-gray-900 text-white px-4 py-2 w-full" @click="getDataImage" :disabled="pictureAvaibility" :class="{ 'opacity-50 cursor-not-allowed' : pictureAvaibility }">
             {{
               extracting ? 'Extracting...' : 'Extract Color'
             }}

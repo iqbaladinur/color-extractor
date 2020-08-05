@@ -24,6 +24,7 @@
 <script>
 import { mapGetters } from 'vuex';
 import copied from '@/components/copy.vue';
+import { copyToClipboard } from '@/helper/CommonHelper';
 
 export default {
   name: 'Colors',
@@ -34,20 +35,7 @@ export default {
     ...mapGetters(['getTopColors', 'getExtractionStatus']),
   },
   methods: {
-    copyToClipboard(text) {
-      const Input = document.createElement('input');
-      Input.setAttribute('type', 'text');
-      Input.value = text;
-      Input.style.position = 'absolute';
-      Input.style.top = 0;
-      Input.style.marginTop = '-100px';
-      const app = document.getElementById('app');
-      app.appendChild(Input);
-      Input.select();
-      Input.setSelectionRange(0, 99999);
-      document.execCommand('copy');
-      Input.remove();
-    },
+    copyToClipboard,
     contrastingText(colorHex) {
       let r = 0;
       let g = 0;
