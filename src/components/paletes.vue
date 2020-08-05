@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center my-6 bg-gray-100 p-2 rounded-xl">
+  <div class="flex justify-center my-6 bg-gray-100 p-1 rounded-xl">
     <Pallete
       v-for="(color, key) in colorsHex"
       :key="key"
@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import Pallete from '@/components/pallete.vue';
+import Pallete from '@/components/palete.vue';
 
 export default {
-  name: 'Palletes',
+  name: 'Paletes',
   components: {
     Pallete,
   },

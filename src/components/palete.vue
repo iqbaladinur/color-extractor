@@ -8,7 +8,7 @@
 import { copyToClipboard } from '@/helper/CommonHelper';
 
 export default {
-  name: 'Pallete',
+  name: 'Palete',
   props: {
     color: {
       type: String,
