@@ -4,7 +4,7 @@
       class="rounded-full w-full py-2 px-4 m-auto bg-gray-100 focus:outline-none placeholder-gray-400 text-gray-700 mb-5"
       v-model="keyword"
       type="text"
-      placeholder="Search with words here"
+      placeholder="Search with a word here"
       @keyup="searchData()"
     >
     <div v-if="arrayOfColors.length > 0">
@@ -45,7 +45,7 @@ export default {
     return {
       keyword: null,
       arrayOfColors: [
-        ['#bffb32ff', '#8cdc52ff', '#5dc378ff', '#9de748ff', '#b7f738ff'],
+        ['#bffb32ff', '#b7f738ff', '#9de748ff', '#8cdc52ff', '#5dc378ff'],
       ],
       isFetching: false,
     };

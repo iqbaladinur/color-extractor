@@ -76,7 +76,7 @@ export default {
       if (url) {
         this.$store.dispatch('toggleIsFetchingImg');
         this.$store.dispatch('setImageSource', null);
-        fetch(`https://yacdn.org/serve/${url}`)
+        fetch(`${url}`)
           .then((result) => result.blob())
           .then((image) => {
             readPictureAsBase64(image)
