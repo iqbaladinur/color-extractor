@@ -1,13 +1,18 @@
-# Color Bianco
+# Biancoir
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b6d2d333-0ace-46f8-a509-ff38ea58336c/deploy-status)](https://app.netlify.com/sites/bianco/deploys)
 
 ## Description
-Color Bianco is website that provide color extraction from an image with quantization algorithm.
-Visit on [Color Bianco](https://bianco.netlify.app).
+Biancoir is website that provide color extraction from an image with quantization algorithm.
+Visit on [Biancoir](https://bianco.netlify.app).
 
-![Color Bianco](https://raw.githubusercontent.com/iqbaladinur/color-extractor/master/screen_capture/ss.png)
+![Biancoir](https://raw.githubusercontent.com/iqbaladinur/color-extractor/master/screen_capture/ss.png)
 
-## Project setup
+## Contribute for palette inspiration
+Biancoir provide feature palettes recomendation with keyword. You can contribute palettes here.
+
+![CONTRIBUTE PALETTE](https://github.com/iqbaladinur/color-extractor/tree/master/colors_data)
+
+## Local Development
 ```
 npm install
 ```
@@ -20,16 +25,6 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
