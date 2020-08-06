@@ -4,7 +4,7 @@
       class="rounded-full w-full py-2 px-4 m-auto bg-gray-100 focus:outline-none placeholder-gray-400 text-gray-700 mb-5"
       v-model="keyword"
       type="text"
-      placeholder="Search with a word here"
+      placeholder="Search a word here, ex: love"
       @keyup="searchData()"
     >
     <div v-if="arrayOfColors.length > 0">
@@ -16,7 +16,7 @@
     </div>
     <div v-else>
       <div v-if="isFetching" class="text-xs p-1 text-center">
-        Fetching data...
+        Looking paletes for <b>{{ keyword }}</b> ...
       </div>
       <div v-else-if="keyword">
         <p class="text-xs text-center p-1">

@@ -11,7 +11,7 @@
         </div>
         <my-footer class="hidden lg:block rounded-b-xl"/>
       </div>
-      <div class="lg:w-1/6 w-0 lg:block hidden py-5 pr-5">
+      <div class="lg:w-1/5 w-0 lg:block hidden py-5 pr-5">
         <div class="rounded-xl bg-indigo-200 bg-opacity-25 custom-right-sidebar p-5 overflow-y-scroll">
           <ColorRecomendation />
         </div>
