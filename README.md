@@ -10,7 +10,7 @@ Visit on [Biancoir](https://bianco.netlify.app).
 ## Contribute for palette inspiration
 Biancoir provide feature palettes recomendation with keyword. You can contribute palettes here.
 
-![CONTRIBUTE PALETTE](https://github.com/iqbaladinur/color-extractor/tree/master/colors_data)
+[CONTRIBUTE PALETTES](https://github.com/iqbaladinur/color-extractor/tree/master/colors_data).
 
 ## Local Development
 ```
