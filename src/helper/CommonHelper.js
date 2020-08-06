@@ -6,8 +6,8 @@ const copyToClipboard = (text) => {
   Input.style.position = 'absolute';
   Input.style.top = 0;
   Input.style.marginTop = '-100px';
-  const app = document.getElementById('app');
-  app.appendChild(Input);
+  const body = document.getElementsByTagName('body')[0];
+  body.appendChild(Input);
   Input.select();
   Input.setSelectionRange(0, 99999);
   document.execCommand('copy');

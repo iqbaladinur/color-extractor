@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10 lg:block lg:p-0 p-8 lg:relative fixed z-10 bottom-0 visible bg-white lg:bg-transparent" :class="mobileViewExpanded ? 'h-auto':'h-0'">
+  <div class="mt-10 lg:block lg:p-0 p-8 lg:relative fixed z-10 w-full bottom-0 visible bg-white lg:bg-transparent" :class="mobileViewExpanded ? 'h-auto':'h-0'">
     <button class="h-5 w-5 absolute top-0 right-0 m-2 text-gray-600 focus:outline-none lg:hidden" @click="mobileViewExpanded = !mobileViewExpanded">
       {{ mobileViewExpanded ? '&#9660;' : '&#9650;' }}
     </button>
