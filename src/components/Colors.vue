@@ -23,7 +23,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import copied from '@/components/copy.vue';
+import copied from '@/components/Copy.vue';
 import { copyToClipboard } from '@/helper/CommonHelper';
 
 export default {
