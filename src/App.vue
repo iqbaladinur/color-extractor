@@ -12,14 +12,14 @@
         <my-footer class="hidden lg:block rounded-b-xl"/>
       </div>
       <div class="lg:w-1/5 lg:block lg:py-5 lg:pr-5 p-5" :class="colorRecomendation ? 'fixed z-20 w-full h-screen bg-indigo-100' : 'hidden'">
-        <div class="rounded-xl bg-indigo-200 lg:bg-opacity-25 custom-right-sidebar p-5 overflow-y-scroll">
+        <div class="rounded-xl bg-indigo-200 bg-opacity-25 custom-right-sidebar p-5 overflow-y-scroll">
           <ColorRecomendation />
         </div>
       </div>
     </div>
     <div class="lg:hidden z-30" :class="colorRecomendation ? 'fixed w-full flex justify-center bottom-0' : 'fixed right-0 top-0 my-16'">
       <button
-        class="h-10 w-10 bg-gray-100 focus:outline-none text-gray-700 font-bold text-center"
+        class="h-12 w-12 bg-gray-100 focus:outline-none text-gray-700 font-bold text-center"
         :class="colorRecomendation ? 'rounded-full mb-3 shadow-xl' : 'shadow-xl rounded-l-lg'"
         @click="colorRecomendation = !colorRecomendation">
         {{ colorRecomendation ? '&#10005;':'&#9776;' }}
