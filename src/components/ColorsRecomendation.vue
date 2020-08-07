@@ -8,15 +8,15 @@
       @keyup="searchData()"
     >
     <div v-if="arrayOfColors.length > 0">
-      <Palletes
-        v-for="(palletes, key) in arrayOfColors"
+      <Palettes
+        v-for="(palettes, key) in arrayOfColors"
         :key="key"
-        :colorsHex="palletes"
+        :colorsHex="palettes"
       />
     </div>
     <div v-else>
       <div v-if="isFetching" class="text-xs p-1 text-center">
-        Looking paletes for <b>{{ keyword }}</b> ...
+        Looking palettes for <b>{{ keyword }}</b> ...
       </div>
       <div v-else-if="keyword">
         <p class="text-xs text-center p-1">
@@ -24,7 +24,7 @@
         </p>
         <div class="text-center mt-2">
           <a href="https://github.com/iqbaladinur/color-extractor/tree/master/colors_data" class="text-xs px-2 py-2 bg-indigo-400 text-white rounded-lg">
-            Contribute Paletes
+            Contribute Palettes
           </a>
         </div>
       </div>
@@ -33,13 +33,13 @@
 </template>
 
 <script>
-import Palletes from '@/components/paletes.vue';
+import Palettes from '@/components/palettes.vue';
 import { debounce } from '@/helper/CommonHelper';
 
 export default {
   name: 'ColorRecomendation',
   components: {
-    Palletes,
+    Palettes,
   },
   data() {
     return {
@@ -77,7 +77,7 @@ export default {
             console.log('error: ', error);
           });
       }
-    }, 1000),
+    }, 850),
   },
 };
 </script>

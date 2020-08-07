@@ -10,6 +10,7 @@ export default new Vuex.Store({
     imgSource: null,
     isFetchingImg: false,
     imgDomObject: null,
+    updateAvaible: false,
   },
   mutations: {
     setTopColors: (state, payload) => {
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     },
     setImgDomObject: (state, domObjct) => {
       state.imgDomObject = domObjct;
+    },
+    setUpdateAvaibility: (state, booleanStatus) => {
+      state.updateAvaible = booleanStatus;
     },
   },
   actions: {
@@ -44,6 +48,9 @@ export default new Vuex.Store({
     setImgDomObject: (context, domObjct) => {
       context.commit('setImgDomObject', domObjct);
     },
+    setUpdateAvaibility: (context, booleanStatus) => {
+      context.commit('setUpdateAvaibility', booleanStatus);
+    },
   },
   getters: {
     getTopColors: (state) => state.topColors,
@@ -51,7 +58,7 @@ export default new Vuex.Store({
     getImgSource: (state) => state.imgSource,
     getFetchingImgStatus: (state) => state.isFetchingImg,
     getImgDomObject: (state) => state.imgDomObject,
+    getUpdateAvaibility: (state) => state.updateAvaible,
   },
-  modules: {
-  },
+  modules: {},
 });

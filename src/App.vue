@@ -25,14 +25,21 @@
         {{ colorRecomendation ? '&#10005;':'&#9776;' }}
       </button>
     </div>
+    <notifier v-if="getUpdateAvaibility" class="text-center lg:mb-5 lg:ml-5 bg-indigo-200 lg:w-auto w-full lg:rounded-lg border border-indigo-200">
+      <button class="text-xs p-1 focus:outline-none" @click="reload()">
+        Update avaible, please reload.
+      </button>
+    </notifier>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Navbar from '@/components/Navbar.vue';
 import MyFooter from '@/components/Footer.vue';
 import PicLoader from '@/components/PictureLoader.vue';
 import ColorRecomendation from '@/components/ColorsRecomendation.vue';
+import Notifier from '@/components/Notifier.vue';
 
 export default {
   name: 'App',
@@ -41,11 +48,20 @@ export default {
     MyFooter,
     PicLoader,
     ColorRecomendation,
+    Notifier,
+  },
+  computed: {
+    ...mapGetters(['getUpdateAvaibility']),
   },
   data() {
     return {
       colorRecomendation: false,
     };
+  },
+  methods: {
+    reload() {
+      window.location.reload();
+    },
   },
 };
 </script>
