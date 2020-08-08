@@ -1,4 +1,11 @@
-# Biancoir
+<div align="center">
+  <br>
+  <img src="https://raw.githubusercontent.com/iqbaladinur/color-extractor/master/public/paint.png" width="100px" height="100px">
+  <h2>
+    Biancoir
+  </h2>
+</div>
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b6d2d333-0ace-46f8-a509-ff38ea58336c/deploy-status)](https://app.netlify.com/sites/bianco/deploys)
 
 ## Description
