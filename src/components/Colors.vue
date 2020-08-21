@@ -1,17 +1,17 @@
 <template>
-  <div class="">
-    <div v-if="getTopColors.length < 1" class="flex flex-wrap justify-center">
-      <div class="lg:w-16 w-10 bg-gray-600 lg:h-16 h-10 m-2 rounded-lg shadow-lg" :class="{ 'animate' : getExtractionStatus}"></div>
-      <div class="lg:w-16 w-10 bg-gray-400 lg:h-16 h-10 m-2 rounded-lg shadow-lg" :class="{ 'animate' : getExtractionStatus}"></div>
-      <div class="lg:w-16 w-10 bg-gray-500 lg:h-16 h-10 m-2 rounded-lg shadow-lg" :class="{ 'animate' : getExtractionStatus}"></div>
-      <div class="lg:w-16 w-10 bg-gray-300 lg:h-16 h-10 m-2 rounded-lg shadow-lg" :class="{ 'animate' : getExtractionStatus}"></div>
-      <div class="lg:w-16 w-10 bg-gray-200 lg:h-16 h-10 m-2 rounded-lg shadow-lg" :class="{ 'animate' : getExtractionStatus}"></div>
+  <div>
+    <div v-if="getTopColors.length < 1" class="palette-container">
+      <div class="color-palette bg-gray-600 shadow-lg" :class="{ 'animate' : getExtractionStatus}" />
+      <div class="color-palette bg-gray-400 shadow-lg" :class="{ 'animate' : getExtractionStatus}" />
+      <div class="color-palette bg-gray-500 shadow-lg" :class="{ 'animate' : getExtractionStatus}" />
+      <div class="color-palette bg-gray-300 shadow-lg" :class="{ 'animate' : getExtractionStatus}" />
+      <div class="color-palette bg-gray-200 shadow-lg" :class="{ 'animate' : getExtractionStatus}" />
     </div>
-    <div v-else class="flex flex-wrap justify-center">
+    <div v-else class="palette-container">
       <div
         v-for="(colors, key) in getTopColors"
+        class="color-palette flex relative"
         :key="key"
-        class="lg:w-16 w-10 lg:h-16 h-10 flex m-2 rounded-lg relative"
         :style="`background-color: ${colors.colorHex}; box-shadow: 0 10px 15px -3px ${colors.colorHex.slice(0, 7)}b4, 0 4px 6px -2px ${colors.colorHex.slice(0, 7)}b4;`"
         @click="copyToClipboard(colors.colorHex)"
       >
@@ -55,3 +55,11 @@ export default {
   },
 };
 </script>
+<style lang="postcss" scoped>
+  .palette-container{
+    @apply flex flex-wrap justify-center;
+  }
+  .color-palette {
+    @apply lg:w-16 lg:h-16 w-10 h-10 m-2 rounded-lg;
+  }
+</style>

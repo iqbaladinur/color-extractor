@@ -11,6 +11,9 @@ module.exports = {
       },
     },
   },
+  experimental: {
+    applyComplexClasses: true,
+  },
   variants: {},
   plugins: [],
   purge: {
