@@ -114,7 +114,7 @@ export default {
         this.extracting = true;
         this.$store.dispatch('setTopColors', []);
         this.drawImage();
-        const imgData = this.canvas.getContext('2d').getImageData(0, 0, this.imageObject.width, this.imageObject.height);
+        const imgData = this.canvas.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height);
         this.$store.dispatch('toggleExtraction');
         this.mobileViewExpanded = false;
         quantifyColor({ imgArray: imgData.data, merge: this.mergedOption, quantity: this.quantity })
@@ -135,9 +135,9 @@ export default {
     drawImage() {
       let scaleDown = 1;
       this.imageObject.crossOrigin = 'Anonymous';
-      this.canvas.getContext('2d').width = this.imageObject.width;
-      this.canvas.getContext('2d').height = this.imageObject.height;
-      if (this.imageObject.width > 500 || this.imageObject.height > 500) {
+      if (this.imageObject.width >= 3000 || this.imageObject.height >= 3000) {
+        scaleDown = 0.05;
+      } else if (this.imageObject.width > 500 || this.imageObject.height > 500) {
         scaleDown = 0.1;
       }
       this.canvas.width = this.imageObject.width * scaleDown;
