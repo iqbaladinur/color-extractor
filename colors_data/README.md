@@ -9,3 +9,6 @@
   ...
 ]
 ```
+
+# CONTRIBUTE VIA ISSUE
+Make issue with [request palette] on the title fox ex: `[request palette] Please add this color palette for 'apple' keyword`. Someone will make pull request for that. 
