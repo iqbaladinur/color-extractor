@@ -35,7 +35,6 @@
 import readPictureAsBase64 from '@/helper/FileReader';
 import quantifyColor from '@/modules/QuantityImageData';
 
-
 export default {
   name: 'PictureLoader',
   data() {
