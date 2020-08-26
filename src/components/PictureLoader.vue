@@ -54,6 +54,7 @@ export default {
   mounted() {
     this.imageObject.crossOrigin = 'Anonymous';
     this.canvas.style.imageRendering = 'pixelated';
+    this.imageObject.addEventListener('load', this.getDataImage);
   },
   watch: {
     url(newValue) {

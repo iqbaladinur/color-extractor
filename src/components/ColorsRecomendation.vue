@@ -5,7 +5,7 @@
       v-model="keyword"
       type="text"
       placeholder="Search a word here, ex: love"
-      @keyup="searchData()"
+      @input="searchData()"
     >
     <div v-if="arrayOfColors.length > 0">
       <Palettes
