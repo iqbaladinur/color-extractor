@@ -4,7 +4,9 @@
       <ul>
         <li>Biancoir {{ year }}</li>
         <li>
-          Made with ❤️ by <a href="https://github.com/iqbaladinur" class="hover:text-blue-500" title="Iqbal Adi">Iqbal Adi</a>
+          Made with ❤️ by <a href="https://github.com/iqbaladinur" class="footer-link">Iqbal Adi</a> |
+          <a href="https://www.privacypolicygenerator.info/live.php?token=ipuHipcuvTXh4fCJtSXLkMPZrRJsT6ib" class="footer-link">Privacy Police</a> |
+          <a href="https://www.termsofusegenerator.net/live.php?token=AnPvYI8rmFEQX8uG1lWqANrqpIzOw3hp" class="footer-link">Terms of Use</a>
         </li>
       </ul>
     </div>
@@ -21,3 +23,8 @@ export default {
   },
 };
 </script>
+<style lang="postcss" scoped>
+.footer-link{
+  @apply hover:text-blue-500;
+}
+</style>
