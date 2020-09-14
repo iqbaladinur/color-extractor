@@ -4,10 +4,10 @@
       {{ mobileViewExpanded ? '&#9660;' : '&#9650;' }}
     </button>
     <div class="flex lg:px-4 py-2">
-      <input type="text" class="rounded-full w-full py-2 px-4 m-auto bg-gray-300 focus:outline-none focus:bg-white placeholder-gray-700 text-gray-700" placeholder="Paste image url here." v-model="url">
+      <input type="text" class="input-style" placeholder="Paste image url here." v-model="url">
     </div>
     <div class="flex lg:px-4 py-2">
-      <input type="number" class="rounded-full w-full py-2 px-4 m-auto bg-gray-300 focus:bg-white focus:outline-none placeholder-gray-700 text-gray-700" placeholder="Number of top colors" v-model="quantity">
+      <input type="number" class="input-style" placeholder="Number of top colors" v-model="quantity">
     </div>
     <div class="flex flex-wrap lg:relative w-full lg:p-0">
       <div class="w-full lg:px-4 py-2">
@@ -39,8 +39,8 @@ export default {
   name: 'PictureLoader',
   data() {
     return {
-      quantity: 10,
-      mergedOption: false,
+      quantity: 28,
+      mergedOption: true,
       imageObject: new Image(),
       canvas: document.createElement('canvas'),
       extracting: false,
@@ -54,6 +54,7 @@ export default {
   mounted() {
     this.imageObject.crossOrigin = 'Anonymous';
     this.canvas.style.imageRendering = 'pixelated';
+    this.readImage('https://source.unsplash.com/800x600?colorful');
     this.imageObject.addEventListener('load', this.getDataImage);
   },
   watch: {
@@ -147,3 +148,8 @@ export default {
   },
 };
 </script>
+<style lang="postcss" scoped>
+.input-style{
+  @apply rounded-full w-full py-2 px-4 m-auto bg-gray-300 focus:outline-none focus:bg-white placeholder-gray-700 text-gray-700;
+}
+</style>
