@@ -1,11 +1,11 @@
 <template>
-  <div class="mt-10 lg:block lg:p-0 p-8 lg:relative fixed z-10 w-full bottom-0 visible bg-white lg:bg-transparent" :class="mobileViewExpanded ? 'h-auto':'h-0'">
+  <div class="mt-10 lg:block lg:p-0 p-8 lg:relative fixed z-10 w-full bottom-0 visible bg-white lg:bg-transparent lg:shadow-none lg:rounded-none shadow-lg rounded-t-lg" :class="mobileViewExpanded ? 'h-auto':'h-0'">
     <button class="h-5 w-5 absolute top-0 right-0 m-2 text-gray-600 focus:outline-none lg:hidden" @click="mobileViewExpanded = !mobileViewExpanded">
       {{ mobileViewExpanded ? '&#9660;' : '&#9650;' }}
     </button>
-    <div class="flex lg:px-4 py-2">
-      <input type="text" class="input-style" placeholder="Paste image url here." v-model="url">
-    </div>
+    <form v-on:submit.prevent @submit="readImage(url)" class="flex lg:px-4 py-2">
+      <input type="text" class="input-style" placeholder="Paste image url here or a word." v-model="url">
+    </form>
     <div class="flex lg:px-4 py-2">
       <input type="number" class="input-style" placeholder="Number of top colors" v-model="quantity">
     </div>
@@ -34,6 +34,8 @@
 <script>
 import readPictureAsBase64 from '@/helper/FileReader';
 import quantifyColor from '@/modules/QuantityImageData';
+// eslint-disable-next-line no-useless-escape
+const urlValidation = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig;
 
 export default {
   name: 'PictureLoader',
@@ -52,15 +54,15 @@ export default {
     };
   },
   mounted() {
+    if (window.screen.width <= 600) {
+      this.quantity = 10;
+    }
     this.imageObject.crossOrigin = 'Anonymous';
     this.canvas.style.imageRendering = 'pixelated';
     this.readImage('https://source.unsplash.com/800x600?colorful');
     this.imageObject.addEventListener('load', this.getDataImage);
   },
   watch: {
-    url(newValue) {
-      this.readImage(newValue);
-    },
     mergedOption() {
       if (this.$store.getters.getImgSource) {
         this.pictureAvaibility = false;
@@ -75,9 +77,10 @@ export default {
   methods: {
     readImage(url = null) {
       if (url) {
+        const theUrl = url.match(urlValidation) ? url : `https://source.unsplash.com/800x600?${url}`;
         this.$store.dispatch('toggleIsFetchingImg');
         this.$store.dispatch('setImageSource', null);
-        fetch(`${url}`)
+        fetch(`${theUrl}`)
           .then((result) => result.blob())
           .then((image) => {
             readPictureAsBase64(image)

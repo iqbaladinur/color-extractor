@@ -4,7 +4,7 @@
       Display Here
     </p>
     <div class="flex flex-wrap">
-      <div class="bg-gray-400 bg-opacity-25 rounded-lg w-full lg:mb-10 mb-2 relative lg:h-custom2 h-auto lg:p-10 p-2">
+      <div class="bg-gray-400 bg-opacity-25 rounded-lg w-full lg:mb-10 mb-2 relative lg:h-custom2 h-custom-mobile lg:p-10 p-2">
         <ImgDisplay />
       </div>
       <div class="bg-gray-400 bg-opacity-25 rounded-lg w-full">
@@ -35,5 +35,8 @@ export default {
   @apply border-2;
   @apply border-gray-300;
   @apply rounded;
+}
+.h-custom-mobile{
+  min-height: 200px;
 }
 </style>
