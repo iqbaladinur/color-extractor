@@ -41,7 +41,7 @@ export default {
   name: 'PictureLoader',
   data() {
     return {
-      quantity: 28,
+      quantity: 13,
       mergedOption: true,
       imageObject: new Image(),
       canvas: document.createElement('canvas'),
