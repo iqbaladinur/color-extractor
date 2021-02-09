@@ -33,7 +33,8 @@
 
 <script>
 import readPictureAsBase64 from '@/helper/FileReader';
-import quantifyColor from '@/modules/QuantityImageData';
+// import quantifyColor from '@/modules/QuantityImageData';
+import clusterColor from '@/modules/ClusterFvck';
 // eslint-disable-next-line no-useless-escape
 const urlValidation = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig;
 
@@ -121,19 +122,32 @@ export default {
         const imgData = this.canvas.getContext('2d').getImageData(0, 0, this.canvas.width, this.canvas.height);
         this.$store.dispatch('toggleExtraction');
         this.mobileViewExpanded = false;
-        quantifyColor({ imgArray: imgData.data, merge: this.mergedOption, quantity: this.quantity })
+        clusterColor(imgData.data, this.quantity)
           .then((res) => {
             this.extracting = false;
             this.$store.dispatch('toggleExtraction');
-            this.$store.dispatch('setTopColors', res.data);
+            this.$store.dispatch('setTopColors', res);
             this.pictureAvaibility = true;
           })
-          .catch((error) => {
+          .catch((e) => {
             this.extracting = false;
             this.$store.dispatch('toggleExtraction');
-            console.log(error);
+            console.log(e);
             this.pictureAvaibility = true;
           });
+        // quantifyColor({ imgArray: imgData.data, merge: this.mergedOption, quantity: this.quantity })
+        //   .then((res) => {
+        //     this.extracting = false;
+        //     this.$store.dispatch('toggleExtraction');
+        //     this.$store.dispatch('setTopColors', res.data);
+        //     this.pictureAvaibility = true;
+        //   })
+        //   .catch((error) => {
+        //     this.extracting = false;
+        //     this.$store.dispatch('toggleExtraction');
+        //     console.log(error);
+        //     this.pictureAvaibility = true;
+        //   });
       }
     },
     drawImage() {
