@@ -1,7 +1,12 @@
 <template>
-  <div class="screen-off lg:py-16 lg:relative w-full px-3 lg:mb-0 mb-10">
-    <p class="text-left font-bold text-gray-600 py-4">
-      Display Here
+  <div class="screen-off lg:py-12 lg:relative w-full px-3 lg:mb-0 mb-10">
+    <p
+      class="text-left font-bold text-gray-600 py-4 text-center text-2xl"
+      :style="{
+        fontFamily: 'Yellowtail, cursive'
+      }"
+    >
+      Image Preview
     </p>
     <div class="flex flex-wrap">
       <div class="bg-gray-400 bg-opacity-25 rounded-lg w-full lg:mb-10 mb-2 relative lg:h-custom2 h-custom-mobile lg:p-10 p-2">

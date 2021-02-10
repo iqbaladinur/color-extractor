@@ -3,7 +3,7 @@
     <input
       class="rounded-full w-full py-2 px-4 m-auto bg-gray-100 focus:outline-none placeholder-gray-400 text-gray-700 mb-5"
       v-model="keyword"
-      type="text"
+      type="search"
       placeholder="Search a word here, ex: love"
       @input="searchData()"
     >
