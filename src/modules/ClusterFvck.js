@@ -25,7 +25,16 @@ const clusterColor = (arrayOfRGB, totalCluster) => new Promise((resolve, reject)
   createArray.onmessage = (res) => {
     const cluster = kmeans(res.data, totalCluster);
     const readyData = cluster.map((arrayOfCluster) => {
-      const hexCode = convertRGBAtoHex(arrayOfCluster[0][0], arrayOfCluster[0][1], arrayOfCluster[0][2], 255);
+      const totalRgb = arrayOfCluster.reduce((acc, currentValue) => {
+        acc[0] += currentValue[0];
+        acc[1] += currentValue[1];
+        acc[2] += currentValue[2];
+        return acc;
+      }, [0, 0, 0]);
+      const r = Math.round(totalRgb[0] / arrayOfCluster.length);
+      const g = Math.round(totalRgb[1] / arrayOfCluster.length);
+      const b = Math.round(totalRgb[2] / arrayOfCluster.length);
+      const hexCode = convertRGBAtoHex(r, g, b, 255);
       return {
         colorHex: hexCode,
         freq: arrayOfCluster.length,
