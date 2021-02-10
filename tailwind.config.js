@@ -14,7 +14,10 @@ module.exports = {
   experimental: {
     applyComplexClasses: true,
   },
-  variants: {},
+  variants: {
+    borderWidth: ['responsive', 'hover', 'focus'],
+    borderColor: ['responsive', 'hover', 'focus'],
+  },
   plugins: [],
   purge: {
     enabled: process.env.NODE_ENV === 'production',

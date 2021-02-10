@@ -4,16 +4,16 @@
       {{ mobileViewExpanded ? '&#9660;' : '&#9650;' }}
     </button>
     <form v-on:submit.prevent @submit="readImage(url)" class="flex lg:px-4 py-2">
-      <input type="text" class="input-style" placeholder="Paste image url here or a word." v-model="url">
+      <input type="search" class="input-style" placeholder="Paste image url here or a word." v-model="url">
     </form>
     <div class="flex lg:px-4 py-2">
-      <input type="number" class="input-style" placeholder="Number of top colors" v-model="quantity">
+      <input type="number" class="input-style" placeholder="Number of colors show" v-model="quantity">
     </div>
     <div class="flex flex-wrap lg:relative w-full lg:p-0">
-      <div class="w-full lg:px-4 py-2">
+      <!-- <div class="w-full lg:px-4 py-2">
         <input id="mergedOption" type="checkbox" v-model="mergedOption" class="h-3 w-3">
         <label class="pl-2 text-sm" for="mergedOption" title="Merged some pixel and use the avg value">Merge Pixel</label>
-      </div>
+      </div> -->
       <div class="w-full lg:px-4 py-2">
         <label for="inputPicture" class="rounded-lg block bg-indigo-400 text-white px-4 py-2 cursor-pointer w-full text-center">
           Select Image
@@ -69,7 +69,10 @@ export default {
         this.pictureAvaibility = false;
       }
     },
-    quantity() {
+    quantity(newVal) {
+      if (newVal > 20) {
+        this.quantity = 20;
+      }
       if (this.$store.getters.getImgSource) {
         this.pictureAvaibility = false;
       }
@@ -167,6 +170,6 @@ export default {
 </script>
 <style lang="postcss" scoped>
 .input-style{
-  @apply rounded-full w-full py-2 px-4 m-auto bg-gray-300 focus:outline-none focus:bg-white placeholder-gray-700 text-gray-700;
+  @apply rounded-full w-full py-2 px-4 m-auto bg-gray-300 border-2 border-opacity-0 focus:border-2 focus:border-indigo-400 focus:outline-none focus:bg-white placeholder-gray-700 text-gray-700;
 }
 </style>
